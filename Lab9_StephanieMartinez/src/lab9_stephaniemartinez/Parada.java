@@ -1,17 +1,14 @@
 package lab9_stephaniemartinez;
 
-public class Paradas {
+public class Parada {
 
     private String nombre;
     private String distancia;
-    private String angulo;
-    private int x;
-    private int y;
+    private double angulo;
+    private double x;
+    private double y;
 
-    public Paradas() {
-    }
-
-    public Paradas(String nombre, String distancia, String angulo, int x, int y) {
+    public Parada(String nombre, String distancia, double angulo, double x, double y) {
         this.nombre = nombre;
         this.distancia = distancia;
         this.angulo = angulo;
@@ -35,33 +32,34 @@ public class Paradas {
         this.distancia = distancia;
     }
 
-    public String getAngulo() {
+    public double getAngulo() {
         return angulo;
     }
 
-    public void setAngulo(String angulo) {
+    public void setAngulo(double angulo) {
         this.angulo = angulo;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
     @Override
     public String toString() {
-        return "Paradas{" + "nombre=" + nombre + ", distancia=" + distancia + ", angulo=" + angulo + ", x=" + x + ", y=" + y + '}';
+        return "Parada{" + "nombre=" + nombre + ", distancia=" + distancia + ", angulo=" + angulo + ", x=" + x + ", y=" + y + '}';
     }
+    
     
 }
