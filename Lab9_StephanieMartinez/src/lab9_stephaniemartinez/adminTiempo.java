@@ -2,15 +2,26 @@ package lab9_stephaniemartinez;
 
 import javax.swing.JProgressBar;
 
-public class adminTiempo extends Thread{
+public class adminTiempo extends Thread {
+
     private JProgressBar barra;
+    private double tiempo;
     private boolean avanzar;
     private boolean vive;
 
-    public adminTiempo(JProgressBar barra) {
+    public adminTiempo(JProgressBar barra, double tiempo) {
         this.barra = barra;
         avanzar = true;
         vive = true;
+        this.tiempo = tiempo;
+    }
+
+    public double getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(double tiempo) {
+        this.tiempo = tiempo;
     }
 
     public boolean isVive() {
@@ -24,8 +35,8 @@ public class adminTiempo extends Thread{
     public boolean isAvanzar() {
         return avanzar;
     }
-    
-    public void setAvanzar(boolean avanzar){
+
+    public void setAvanzar(boolean avanzar) {
         this.avanzar = avanzar;
     }
 
@@ -41,7 +52,7 @@ public class adminTiempo extends Thread{
         while (vive) {
             if (avanzar) {
                 barra.setValue(barra.getValue() + 1);
-                if (barra.getValue() == 100000000) {
+                if (barra.getValue() == tiempo) {
                     vive = false;
                 }
             }
