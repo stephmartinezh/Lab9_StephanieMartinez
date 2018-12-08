@@ -578,6 +578,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         String estudiante = "";
+        //tiempo
         for (int i = 0; i <= paradas.size(); i++) {
             double distancia = calculoDistancia(paradas.get(i).getX(), paradas.get(i).getY(), paradas.get(i + 1).getX(), paradas.get(i + 1).getY());
             double t = tiempo(distancia, bus.get(0).getVelocidad());
