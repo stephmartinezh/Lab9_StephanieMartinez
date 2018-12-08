@@ -5,12 +5,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Principal extends javax.swing.JFrame {
-
+    
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -336,6 +336,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel21.setText("Tiempo hasta la próxima parada");
 
         tiempo.setMaximum(1000000);
+        tiempo.setStringPainted(true);
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel22.setText("Parada");
@@ -411,7 +412,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(parada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -572,16 +573,22 @@ public class Principal extends javax.swing.JFrame {
             simulacion.setLocationRelativeTo(this);
             simulacion.setVisible(true);
         }
-
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        String estudiante = "";
         for (int i = 0; i < paradas.size(); i++) {
+            parada.setText(paradas.get(i).getNombre());
             if (i < paradas.size() - 1) {
+                if (paradas.get(i).getNombre().equals(estudiantes.get(i).getParada())) {
+                    estudiante = estudiantes.get(i).getNombre();
+                    estudiantes.remove(i);
+                }
                 double distancia = calculoDistancia(paradas.get(i).getX(), paradas.get(i).getY(), paradas.get(i + 1).getX(), paradas.get(i + 1).getY());
                 double t = tiempo(distancia, bus.get(0).getVelocidad());
                 t *= 60;
-                Object[] newrow = {paradas.get(i).getNombre(), t, estudiantes.get(i).getNombre()};
+                
+                Object[] newrow = {paradas.get(i).getNombre(), t, estudiante};
                 DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                 modelo.addRow(newrow);
                 tabla.setModel(modelo);
@@ -590,7 +597,7 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton9MouseClicked
-
+    
     public double calculoDistancia(double x1, double y1, double x2, double y2) {
         double restax = x2 - x1;
         double restay = y2 - y1;
@@ -600,12 +607,12 @@ public class Principal extends javax.swing.JFrame {
         double distancia = Math.sqrt(suma);
         return distancia;
     }
-
+    
     public double tiempo(double distancia, double velocidad) {
         double t = distancia / velocidad;
         return t;
     }
-
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -691,5 +698,5 @@ public class Principal extends javax.swing.JFrame {
 ArrayList<Parada> paradas = new ArrayList();
     ArrayList<Autobus> bus = new ArrayList();
     ArrayList<Estudiantes> estudiantes = new ArrayList();
-
+    
 }
